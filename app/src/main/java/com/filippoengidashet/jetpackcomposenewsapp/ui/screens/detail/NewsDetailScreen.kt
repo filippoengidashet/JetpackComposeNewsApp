@@ -58,7 +58,7 @@ fun NewsDetailScreen(navController: NavController, item: ArticleInfo) {
                     text = item.title,
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
-                    color = Color.Black,
+                    color = MaterialTheme.colorScheme.onSurface,
                     fontSize = 21.sp
                 )
                 Spacer(Modifier.height(8.dp))
@@ -74,9 +74,9 @@ fun NewsDetailScreen(navController: NavController, item: ArticleInfo) {
                 Spacer(Modifier.height(8.dp))
                 Text(
                     text = item.body,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Normal,
-                    color = Color.Gray,
                     fontSize = 16.sp
                 )
             }

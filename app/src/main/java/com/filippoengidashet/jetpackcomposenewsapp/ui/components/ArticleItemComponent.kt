@@ -63,7 +63,7 @@ fun ArticleItemComponent(article: ArticleInfo, onClick: () -> Unit) {
                 text = article.title,
                 style = Typography.bodyLarge,
                 maxLines = 1,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onSurface,
             )
             Text(
                 text = article.body,
