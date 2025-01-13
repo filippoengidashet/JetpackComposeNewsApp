@@ -55,7 +55,7 @@ fun NewsDetailScreen(navController: NavController, item: ArticleInfo) {
                     .weight(1f)
             ) {
                 Text(
-                    text = "UK online safety laws ‘unsatisfactory’ and ‘uneven’, says science minister",
+                    text = item.title,
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
                     color = Color.Black,

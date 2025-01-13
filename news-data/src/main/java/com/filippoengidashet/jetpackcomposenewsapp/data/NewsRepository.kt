@@ -52,18 +52,17 @@ class NewsRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    private fun mapArticles(articles: NewsResponse) =
-        articles.response.results.orEmpty().map {
-            ArticleData(
-                id = it.id.orEmpty(),
-                url = it.webUrl.orEmpty(),
-                published = it.webPublicationDate.orEmpty(),
-                title = it.fields?.headline.orEmpty(),
-                body = it.fields?.bodyText.orEmpty(),
-                author = it.fields?.byline.orEmpty(),
-                thumbnail = it.fields?.thumbnail.orEmpty(),
-            )
-        }
+    private fun mapArticles(articles: NewsResponse) = articles.response.results.orEmpty().map {
+        ArticleData(
+            id = it.id.orEmpty(),
+            url = it.webUrl.orEmpty(),
+            published = it.webPublicationDate.orEmpty(),
+            title = it.fields?.headline.orEmpty(),
+            body = it.fields?.bodyText.orEmpty(),
+            author = it.fields?.byline.orEmpty(),
+            thumbnail = it.fields?.thumbnail.orEmpty(),
+        )
+    }
 
     private suspend fun storeArticles(results: List<ArticleData>) = withContext(Dispatchers.IO) {
         cachedDataSource.saveArticles(results)

@@ -26,5 +26,5 @@ interface NewsBookmarkDao {
     suspend fun delete(entity: NewsBookmarkEntity)
 
     @Query("DELETE FROM news_bookmark_table")
-    fun deleteAll()
+    suspend fun deleteAll()
 }

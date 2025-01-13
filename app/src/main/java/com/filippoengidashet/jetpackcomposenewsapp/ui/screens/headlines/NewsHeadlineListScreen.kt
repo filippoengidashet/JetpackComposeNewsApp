@@ -35,7 +35,7 @@ fun NewsHeadlineListScreen(navController: NavController) {
     val isLoading = newsViewModel.loadingState.collectAsStateWithLifecycle().value
     val errorState = newsViewModel.events.collectAsStateWithLifecycle(null)
 
-    if (articlesUiState == ArticlesUiState.Idle) {
+    if (articlesUiState == ArticlesUiState.Idle && !isLoading) {
         newsViewModel.fetchHeadlines()
     }
 
