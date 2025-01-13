@@ -17,14 +17,14 @@
 
 <table>
   <tr>
-    <td><img alt="SplashScreen" src="assets/screenshots/1-splash.png" width="150"></td>
-    <td><img alt="LoadingScreen" src="assets/screenshots/2-home-loader.png" width="150"></td>
-    <td><img alt="ArticleListScreen" src="assets/screenshots/3-result-list.png" width="150"></td>
-    <td><img alt="ArticleSearchPopup" src="assets/screenshots/4-search-popup.png" width="150"></td>
-    <td><img alt="ArticleDetailScreen" src="assets/screenshots/5-item-detail.png" width="150"></td>
-    <td><img alt="ErrorMessageSnackBar" src="assets/screenshots/6-error-snack-messsage.png" width="150"></td>
-    <td><img alt="ArticleListDarkScreen" src="assets/screenshots/7-list-dark-mode.png" width="150"></td>
-    <td><img alt="ArticleDetailDarkScreen" src="assets/screenshots/8-detail-dark-mode.png" width="150"></td>
+    <td><img alt="SplashScreen" src="assets/screenshots/1-splash.png" width="150" /></td>
+    <td><img alt="LoadingScreen" src="assets/screenshots/2-home-loader.png" width="150" /></td>
+    <td><img alt="ArticleListScreen" src="assets/screenshots/3-result-list.png" width="150" /></td>
+    <td><img alt="ArticleSearchPopup" src="assets/screenshots/4-search-popup.png" width="150" /></td>
+    <td><img alt="ArticleDetailScreen" src="assets/screenshots/5-item-detail.png" width="150" /></td>
+    <td><img alt="ErrorMessageSnackBar" src="assets/screenshots/6-error-snack-messsage.png" width="150" /></td>
+    <td><img alt="ArticleListDarkScreen" src="assets/screenshots/7-list-dark-mode.png" width="150" /></td>
+    <td><img alt="ArticleDetailDarkScreen" src="assets/screenshots/8-detail-dark-mode.png" width="150" /></td>
   </tr>
 </table>
 
@@ -36,6 +36,9 @@
 - Dependency Injection with Dagger-Hilt
 - Ui component construction with Jetpack Compose framework and Material3
 - Use of kotlin flow to handle async data over coroutines
+- Retrofit for REST API calls
+- Room database for persistence
+- Coil for image loading and caching
 - Partial unit test with mockito
 
 ## Architecture
@@ -58,6 +61,7 @@ The App is modularized into 3 modules named:
 - Retrofit
 - Jetpack Compose
 - Navigation
+- Room
 - Etc.
 
 ### Testing
