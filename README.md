@@ -73,3 +73,7 @@ Partial classes of certain modules have been tested with Mockito but requires ti
 - Add more Unit/Ui test
 - Support add/remove bookmark feature
 - Complete Bookmark list screen
+- Add Filter and Sort options
+- Apply pagination for the News feed
+- Integrate Notification Updates using work manager
+- Create Settings to manage user preferences (language, theme, clear cache)
