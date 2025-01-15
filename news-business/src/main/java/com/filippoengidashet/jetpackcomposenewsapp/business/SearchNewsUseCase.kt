@@ -6,11 +6,11 @@ import com.filippoengidashet.jetpackcomposenewsapp.data.model.ResultWrapper
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetHeadlinesUseCase @Inject constructor(
+class SearchNewsUseCase @Inject constructor(
     private val newsRepository: NewsRepository,
 ) {
 
-    suspend fun fetchArticles(): Flow<ResultWrapper<List<ArticleData>>> {
-        return newsRepository.fetchHeadlineArticles()
+    fun searchNews(query: String): Flow<ResultWrapper<List<ArticleData>>> {
+        return newsRepository.searchNews(query)
     }
 }

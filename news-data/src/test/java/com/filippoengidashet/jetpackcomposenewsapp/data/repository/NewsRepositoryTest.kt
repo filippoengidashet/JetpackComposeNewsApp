@@ -1,6 +1,8 @@
 package com.filippoengidashet.jetpackcomposenewsapp.data.repository
 
 import com.filippoengidashet.jetpackcomposenewsapp.data.NewsRepository
+import com.filippoengidashet.jetpackcomposenewsapp.data.model.ArticleData
+import com.filippoengidashet.jetpackcomposenewsapp.data.model.ResultWrapper
 import com.filippoengidashet.jetpackcomposenewsapp.data.service.model.ArticleResult
 import com.filippoengidashet.jetpackcomposenewsapp.data.service.model.ArticlesResponse
 import com.filippoengidashet.jetpackcomposenewsapp.data.service.model.NewsResponse
@@ -42,22 +44,27 @@ class NewsRepositoryTest {
 
     @Test
     fun `Test fetchHeadlines SUCCESS`() = runTest {
-        Mockito.`when`(cachedNewsDataSource.getArticles()).thenReturn(listOf())
-        Mockito.`when`(remoteNewsDataSource.fetchHeadlineArticles()).thenReturn(
-            NewsResponse(
-                ArticlesResponse(
-                    results = listOf(
-                        ArticleResult(),
-                        ArticleResult(),
-                        ArticleResult(),
-                    ),
-                )
+        val mockHeadlinesResponse = NewsResponse(
+            ArticlesResponse(
+                results = listOf(
+                    ArticleResult(),
+                    ArticleResult(),
+                    ArticleResult(),
+                ),
             )
         )
-        val flow = repository.fetchHeadlineArticles()
-        val single = flow.single()
-        println(single.size)
-        Assert.assertEquals("", 0)
+        val cachedHeadlineResults = emptyList<ArticleData>()
+
+        Mockito.`when`(cachedNewsDataSource.getArticles()).thenReturn(cachedHeadlineResults)
+        Mockito.`when`(remoteNewsDataSource.fetchHeadlineArticles())
+            .thenReturn(mockHeadlinesResponse)
+
+        val resultFlow = repository.fetchHeadlineArticles()
+
+        resultFlow.collect { result ->
+            Assert.assertNotNull(result)
+            Assert.assertTrue(result is ResultWrapper.Success)
+        }
     }
 
     @Test

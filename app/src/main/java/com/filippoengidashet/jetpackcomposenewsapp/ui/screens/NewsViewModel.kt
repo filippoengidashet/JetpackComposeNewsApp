@@ -4,12 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.filippoengidashet.jetpackcomposenewsapp.business.GetBookmarksUseCase
 import com.filippoengidashet.jetpackcomposenewsapp.business.GetHeadlinesUseCase
+import com.filippoengidashet.jetpackcomposenewsapp.business.SearchNewsUseCase
 import com.filippoengidashet.jetpackcomposenewsapp.data.model.ResultWrapper
 import com.filippoengidashet.jetpackcomposenewsapp.ui.model.ArticleInfo
 import com.filippoengidashet.jetpackcomposenewsapp.ui.model.ArticlesUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -18,11 +18,11 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import kotlin.random.Random
 
 @HiltViewModel
 class NewsViewModel @Inject constructor(
     private val headlinesUseCase: GetHeadlinesUseCase,
+    private val searchNewsUseCase: SearchNewsUseCase,
     private val bookmarksUseCase: GetBookmarksUseCase,
 ) : ViewModel() {
 
@@ -73,7 +73,7 @@ class NewsViewModel @Inject constructor(
 
     fun searchNews(query: String) {
         viewModelScope.launch {
-            headlinesUseCase.searchNews(query)
+            searchNewsUseCase.searchNews(query)
                 .onStart {
                     _loadingState.value = true
                 }

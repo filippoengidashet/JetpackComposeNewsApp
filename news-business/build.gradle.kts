@@ -45,4 +45,7 @@ dependencies {
     api(project(":news-data"))
 
     testImplementation(libs.junit)
+    testImplementation(libs.mockito)
+    testImplementation(libs.test.coroutines)
+    testImplementation(libs.mockk.android)
 }

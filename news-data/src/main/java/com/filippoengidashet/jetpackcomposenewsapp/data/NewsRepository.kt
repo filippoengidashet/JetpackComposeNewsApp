@@ -17,7 +17,7 @@ class NewsRepository @Inject constructor(
     private val cachedDataSource: CachedNewsDataSource,
 ) {
 
-    suspend fun fetchHeadlineArticles(): Flow<ResultWrapper<List<ArticleData>>> {
+    fun fetchHeadlineArticles(): Flow<ResultWrapper<List<ArticleData>>> {
         return flow {
             //1. Emit Saved Articles
             val cachedArticles = cachedDataSource.getArticles()
@@ -39,7 +39,7 @@ class NewsRepository @Inject constructor(
         }.flowOn(Dispatchers.IO)
     }
 
-    suspend fun searchNews(query: String): Flow<ResultWrapper<List<ArticleData>>> {
+    fun searchNews(query: String): Flow<ResultWrapper<List<ArticleData>>> {
         return flow {
             try {
                 val articles = remoteDataSource.searchNews(query)
